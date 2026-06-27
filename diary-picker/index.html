@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>旅行日記 · 風格選擇｜好家來</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    body{margin:0;font-family:Inter,'Noto Sans TC',sans-serif;background:#f7f6f2;color:#28251d;line-height:1.7}
+    main{max-width:980px;margin:0 auto;padding:60px 24px}
+    h1{font-family:'Noto Serif TC',serif;font-size:40px;margin:0 0 8px}
+    .sub{color:#7a756a;margin:0 0 40px}
+    code{background:#e8e3d7;padding:2px 8px;border-radius:6px;font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .card{display:block;text-decoration:none;color:inherit;background:#fbfbf9;border:1px solid #d6d1c9;border-radius:16px;padding:24px;transition:transform .15s,box-shadow .15s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+    .tag{display:inline-block;background:#01696f;color:#fff;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:12px}
+    .card h2{font-family:'Noto Serif TC',serif;font-size:22px;margin:0 0 8px;line-height:1.3}
+    .card p{margin:0;color:#5a554d;font-size:15px}
+    .foot{margin-top:40px;color:#7a756a;font-size:14px}
+    .foot a{color:#01696f;text-decoration:none;margin:0 8px}
+  </style>
+</head>
+<body class="picker">
+
+    <main>
+      <h1>選一個 diary 樣式</h1>
+      <p class="sub">三個版本目前用同一批 demo 內容。挑一個後告訴我,我把 <code>/diary/</code> 改成那一版。</p>
+      <div class="grid">
+        <a class="card" href="/diary/">
+          <div class="tag">A · 極簡日誌</div>
+          <h2>白底 · 大字 · 單欄</h2>
+          <p>像 Medium。重視文字、淡化裝飾。長文也讀得舒服。</p>
+        </a>
+        <a class="card" href="/diary-grid/">
+          <div class="tag">B · 照片網格</div>
+          <h2>深色 · 卡片 · 多欄</h2>
+          <p>像 IG。照片大、文字精簡。適合圖多文少的旅行貼文。</p>
+        </a>
+        <a class="card" href="/diary-journal/">
+          <div class="tag">C · 手帳風</div>
+          <h2>米色 · 時間軸 · 雙欄</h2>
+          <p>像紙本日記。日期+地點在左,文字在右。延續 homoney 主視覺。</p>
+        </a>
+      </div>
+      <p class="foot"><a href="/">← homoney-travel</a> · <a href="https://www.homoney.org/">回 Homoney</a></p>
+    </main>
+  
+</body>
+</html>
