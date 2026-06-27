@@ -3,110 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>京都 6 月 · 好家來旅行</title>
+<title>京都 6 月 · 賓賓姊的旅行</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,'Noto Sans TC',sans-serif;background:#f7f6f2;color:#28251d;line-height:1.75}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-    a{color:#01696f}
-    .hero{background:linear-gradient(135deg,#fbfbf9 0%,#f0ede8 100%);padding:60px 0 50px;border-bottom:1px solid #e8e3d7}
-    .hero.compact{padding:40px 0 30px}
-    .back{display:inline-block;color:#01696f;text-decoration:none;font-size:14px;margin-bottom:16px;font-weight:500}
-    .hero h1{font-family:'Noto Serif TC',serif;font-size:48px;margin:0 0 12px;letter-spacing:-0.01em;line-height:1.1}
-    .hero.compact h1{font-size:36px}
-    .lead{color:#5a554d;font-size:17px;max-width:640px;margin:0 0 24px}
-    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-    .cta{background:#01696f;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px}
-    .cta-sub{background:#fff;color:#01696f;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid #d6d1c9}
-    .cta:hover,.cta-sub:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(1,105,111,.18)}
-    .row{padding:48px 0}
-    .row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
-    .row h2{font-family:'Noto Serif TC',serif;font-size:28px;margin:0 0 24px;letter-spacing:0.02em}
-    .row-head h2{margin:0}
-    .more{color:#01696f;text-decoration:none;font-size:15px;font-weight:500}
-    .trip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-    .trip-card{display:block;text-decoration:none;color:inherit;background:#fbfbf9;border:1px solid #d6d1c9;border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-    .trip-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
-    .cover{aspect-ratio:16/10;overflow:hidden;background:#e8e3d7}
-    .cover img{width:100%;height:100%;object-fit:cover;display:block}
-    .cover.empty{background:linear-gradient(135deg,#e8e3d7,#d6d1c9)}
-    .info{padding:18px 20px 22px}
-    .badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:10px}
-    .badge.upcoming{background:#fff4d6;color:#8a6500}
-    .badge.published{background:#e0f0ee;color:#01696f}
-    .info h3{font-family:'Noto Serif TC',serif;font-size:20px;margin:0 0 6px;line-height:1.3}
-    .info .subtitle{margin:0 0 8px;color:#5a554d;font-size:14px}
-    .info .date{margin:0;color:#7a756a;font-size:13px;font-variant-numeric:tabular-nums}
-    .recent{display:flex;flex-direction:column;gap:0;background:#fbfbf9;border:1px solid #d6d1c9;border-radius:20px;overflow:hidden}
-    .recent-item{display:flex;gap:16px;padding:18px 20px;text-decoration:none;color:inherit;border-bottom:1px solid #e8e3d7;align-items:center;transition:background .15s}
-    .recent-item:last-child{border-bottom:none}
-    .recent-item:hover{background:#f7f6f2}
-    .thumb{width:60px;height:60px;border-radius:10px;object-fit:cover;flex-shrink:0}
-    .r-meta{color:#7a756a;font-size:13px;margin-bottom:4px}
-    .r-title{font-weight:500;font-size:15px}
-    .foot{margin-top:40px;padding:40px 0 60px;border-top:1px solid #e8e3d7;background:#fbfbf9}
-    .foot .links{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:12px}
-    .foot a{color:#01696f;text-decoration:none;font-size:14px}
-    .foot p{margin:0;color:#7a756a;font-size:13px}
-    @media(max-width:680px){.hero h1{font-size:36px}.hero.compact h1{font-size:28px}.lead{font-size:15px}}
-  
-    .trip-hero{position:relative;min-height:420px;color:#fbfbf9;overflow:hidden;display:flex;align-items:flex-end;padding:60px 0 50px}
-    .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.55)}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(0,0,0,.6) 100%)}
-    .hero-content{position:relative;z-index:1}
-    .trip-hero .back{color:#fbfbf9;opacity:.9}
-    .trip-hero h1{font-family:'Noto Serif TC',serif;font-size:48px;margin:16px 0 8px;color:#fff;line-height:1.1;text-shadow:0 2px 12px rgba(0,0,0,.3)}
-    .trip-hero .subtitle{font-size:18px;margin:0 0 12px;opacity:.92}
-    .trip-hero .date{margin:0 0 12px;font-size:14px;opacity:.85;font-variant-numeric:tabular-nums}
-    .trip-hero .summary{margin:12px 0 0;max-width:680px;font-size:15px;opacity:.95;line-height:1.7}
-    .status{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:rgba(255,255,255,.95);color:#01696f}
-    .status.upcoming{background:#fff4d6;color:#8a6500}
-    .feed{padding:48px 24px 80px;position:relative}
-    .feed::before{content:"";position:absolute;left:calc(24px + 140px);top:48px;bottom:80px;width:1px;background:#d6d1c9}
-    .entry{display:grid;grid-template-columns:120px 1fr;gap:40px;padding:24px 0;align-items:start;font-family:'Noto Serif TC',serif}
-    .side{position:relative;text-align:right;font-family:Inter,sans-serif}
-    .side .date{font-size:14px;color:#01696f;font-weight:600;font-variant-numeric:tabular-nums}
-    .side .loc{font-size:13px;color:#7a756a;margin-top:4px}
-    .side .dot{position:absolute;right:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:#01696f;border:3px solid #f7f6f2;z-index:1}
-    .body{background:#fbfbf9;border:1px solid #d6d1c9;border-radius:16px;padding:24px 26px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
-    .trip-tag{display:inline-block;font-family:Inter,sans-serif;font-size:12px;color:#01696f;background:#e0f0ee;padding:3px 10px;border-radius:999px;text-decoration:none;margin-bottom:8px;font-weight:600}
-    .body h2{font-size:24px;margin:0 0 12px;line-height:1.3}
-    .body p{margin:0 0 16px;font-size:16px;line-height:1.85}
-    .body .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
-    .body .photos img{width:100%;border-radius:8px;display:block}
-    .empty{text-align:center;padding:60px 20px;color:#7a756a;font-family:Inter,sans-serif;font-size:15px;background:#fbfbf9;border:1px dashed #d6d1c9;border-radius:16px}
-    @media(max-width:680px){
-      .trip-hero{min-height:320px;padding:50px 0 40px}
-      .trip-hero h1{font-size:32px}
-      .feed::before{left:calc(24px + 8px)}
-      .entry{grid-template-columns:1fr;gap:8px}
-      .side{text-align:left;padding-left:24px}
-      .side .dot{left:3px;right:auto;top:4px}
-    }
-  </style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,'Noto Sans TC',sans-serif;background:#f7f6f2;color:#28251d;line-height:1.75}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+a{color:#01696f}
+.topnav{background:#fbfbf9;border-bottom:1px solid #e8e3d7;position:sticky;top:0;z-index:50}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;flex-wrap:wrap;gap:12px}
+.brand{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;color:#28251d;text-decoration:none}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{padding:8px 14px;border-radius:999px;text-decoration:none;color:#28251d;font-size:14px;font-weight:500}
+.nav-links a.nav-cta{background:#01696f;color:#fff}
+.trip-hero{position:relative;min-height:420px;color:#fbfbf9;overflow:hidden;display:flex;align-items:flex-end;padding:60px 0 50px}
+.hero-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.55);background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png');background-color:#01696f}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.6))}
+.hero-content{position:relative;z-index:1}
+.trip-hero h1{font-family:'Noto Serif TC',serif;font-size:48px;margin:16px 0 8px;color:#fff;line-height:1.1;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.trip-hero .subtitle{font-size:18px;margin:0 0 12px;opacity:.92}
+.trip-hero .date{margin:0 0 12px;font-size:14px;opacity:.85}
+.trip-hero .summary{margin:12px 0 0;max-width:680px;font-size:15px;opacity:.95;line-height:1.7}
+.status{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;background:#fff;color:#01696f}
+.feed{padding:60px 24px 80px;max-width:900px;margin:0 auto}
+.empty{text-align:center;padding:60px 20px;color:#5a554d;font-size:16px;background:#fbfbf9;border:1px dashed #d6d1c9;border-radius:16px}
+.empty strong{color:#01696f;font-size:18px}
+.empty p{margin:12px 0 0}
+.empty .cta-row{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta{background:#01696f;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px}
+.cta-sub{background:#fff;color:#01696f;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid #d6d1c9}
+.foot{margin-top:60px;background:#28251d;color:#d6d1c9}
+.foot .wrap{padding:50px 24px 40px}
+.foot-cta{text-align:center;margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid #3a362c}
+.foot-cta h3{font-family:'Noto Serif TC',serif;font-size:24px;color:#fbfbf9;margin:0 0 18px}
+.foot-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.foot-cta .cta{background:#7fd1c8;color:#001a1c}
+.foot-cta .cta-sub{background:transparent;color:#7fd1c8;border-color:#3a362c}
+.foot-links{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:14px;justify-content:center}
+.foot-links a{color:#7fd1c8;text-decoration:none;font-size:14px}
+.foot-copy{margin:0;color:#7a756a;font-size:13px;text-align:center}
+@media(max-width:680px){.trip-hero{min-height:320px;padding:50px 0 40px}.trip-hero h1{font-size:32px}}
+</style>
 </head>
 <body>
+<nav class="topnav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/">賓賓姊 · 旅行站</a>
+    <div class="nav-links">
+      <a href="/trips/">旅行目錄</a>
+      <a href="/diary/">日記流</a>
+      <a class="nav-cta" href="https://www.homoney.org/">回 Homoney 主站</a>
+      <a class="nav-cta" href="https://www.homoney.org/course-overview/">看課程總覽</a>
+    </div>
+  </div>
+</nav>
 
-    <header class="trip-hero">
-      <div class="hero-img" style="background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png')"></div>
-      <div class="hero-overlay"></div>
-      <div class="wrap hero-content">
-        <a class="back" href="/trips/">← 所有旅行</a>
-        <span class="status published">已完成</span>
-        <h1>京都 6 月</h1>
-        <p class="subtitle">嵐山與抹茶</p>
-        <p class="date">2026-06-19 → 2026-06-21</p>
-        <p class="summary">清晨竹林、宇治抹茶、京阪河岸散步。</p>
+<header class="trip-hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <span class="status">已完成</span>
+    <h1>京都 6 月</h1>
+    <p class="subtitle">嵐山與抹茶</p>
+    <p class="date">2026-06-19 → 2026-06-21</p>
+    <p class="summary">清晨竹林、宇治抹茶、京阪河岸散步。三天兩夜的小旅行。</p>
+  </div>
+</header>
+
+<main class="feed">
+  <div class="empty">
+    <strong>京都的日記正在補齊中</strong>
+    <p>那趟旅行的紀錄會陸續補上來。同步的內容也會出現在 <a href="/diary/">日記流</a>。</p>
+    <div class="cta-row">
+      <a class="cta" href="https://www.homoney.org/">回 Homoney 主站</a>
+      <a class="cta-sub" href="https://www.homoney.org/course-overview/">看課程總覽</a>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-cta">
+      <h3>看完旅行,認識更多賓賓姊</h3>
+      <div class="foot-cta-row">
+        <a class="cta" href="https://www.homoney.org/">回 Homoney 主站</a>
+        <a class="cta-sub" href="https://www.homoney.org/course-overview/">看課程總覽</a>
       </div>
-    </header>
-    <main class="wrap feed">
-      <div class="empty">這趟還沒有日記。從 Sheet 新增一篇 trip=kyoto-2026-06 的 row,跑 publishAll 後就會出現在這裡。</div>
-      
-    </main>
-    <footer class="foot"><div class="wrap"><div class="links"><a href="/">首頁</a><a href="/trips/">旅行目錄</a><a href="/diary/">日記流</a><a href="https://www.homoney.org/">回 Homoney</a></div></div></footer>
-  
+    </div>
+    <div class="foot-links">
+      <a href="/">首頁</a>
+      <a href="/trips/">旅行目錄</a>
+      <a href="/diary/">日記流</a>
+      <a href="https://www.homoney.org/">Homoney 主站</a>
+      <a href="https://www.homoney.org/course-overview/">課程總覽</a>
+    </div>
+    <p class="foot-copy">© 賓賓姊 · 自架平台 · 內容版權所有</p>
+  </div>
+</footer>
 </body>
 </html>
