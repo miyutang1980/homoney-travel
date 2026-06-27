@@ -1,72 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>旅行目錄 · 好家來</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>所有旅行 · 賓賓姊 · 旅行紀錄</title>
+<meta name="description" content="賓賓姊的所有旅行,從規劃中到已完成。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,'Noto Sans TC',sans-serif;background:#f7f6f2;color:#28251d;line-height:1.75}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-    a{color:#01696f}
-    .hero{background:linear-gradient(135deg,#fbfbf9 0%,#f0ede8 100%);padding:60px 0 50px;border-bottom:1px solid #e8e3d7}
-    .hero.compact{padding:40px 0 30px}
-    .back{display:inline-block;color:#01696f;text-decoration:none;font-size:14px;margin-bottom:16px;font-weight:500}
-    .hero h1{font-family:'Noto Serif TC',serif;font-size:48px;margin:0 0 12px;letter-spacing:-0.01em;line-height:1.1}
-    .hero.compact h1{font-size:36px}
-    .lead{color:#5a554d;font-size:17px;max-width:640px;margin:0 0 24px}
-    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-    .cta{background:#01696f;color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px}
-    .cta-sub{background:#fff;color:#01696f;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid #d6d1c9}
-    .cta:hover,.cta-sub:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(1,105,111,.18)}
-    .row{padding:48px 0}
-    .row-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
-    .row h2{font-family:'Noto Serif TC',serif;font-size:28px;margin:0 0 24px;letter-spacing:0.02em}
-    .row-head h2{margin:0}
-    .more{color:#01696f;text-decoration:none;font-size:15px;font-weight:500}
-    .trip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-    .trip-card{display:block;text-decoration:none;color:inherit;background:#fbfbf9;border:1px solid #d6d1c9;border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-    .trip-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
-    .cover{aspect-ratio:16/10;overflow:hidden;background:#e8e3d7}
-    .cover img{width:100%;height:100%;object-fit:cover;display:block}
-    .cover.empty{background:linear-gradient(135deg,#e8e3d7,#d6d1c9)}
-    .info{padding:18px 20px 22px}
-    .badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:10px}
-    .badge.upcoming{background:#fff4d6;color:#8a6500}
-    .badge.published{background:#e0f0ee;color:#01696f}
-    .info h3{font-family:'Noto Serif TC',serif;font-size:20px;margin:0 0 6px;line-height:1.3}
-    .info .subtitle{margin:0 0 8px;color:#5a554d;font-size:14px}
-    .info .date{margin:0;color:#7a756a;font-size:13px;font-variant-numeric:tabular-nums}
-    .recent{display:flex;flex-direction:column;gap:0;background:#fbfbf9;border:1px solid #d6d1c9;border-radius:20px;overflow:hidden}
-    .recent-item{display:flex;gap:16px;padding:18px 20px;text-decoration:none;color:inherit;border-bottom:1px solid #e8e3d7;align-items:center;transition:background .15s}
-    .recent-item:last-child{border-bottom:none}
-    .recent-item:hover{background:#f7f6f2}
-    .thumb{width:60px;height:60px;border-radius:10px;object-fit:cover;flex-shrink:0}
-    .r-meta{color:#7a756a;font-size:13px;margin-bottom:4px}
-    .r-title{font-weight:500;font-size:15px}
-    .foot{margin-top:40px;padding:40px 0 60px;border-top:1px solid #e8e3d7;background:#fbfbf9}
-    .foot .links{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:12px}
-    .foot a{color:#01696f;text-decoration:none;font-size:14px}
-    .foot p{margin:0;color:#7a756a;font-size:13px}
-    @media(max-width:680px){.hero h1{font-size:36px}.hero.compact h1{font-size:28px}.lead{font-size:15px}}
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,"Noto Sans TC",sans-serif;background:#f7f6f2;color:#28251d;line-height:1.7}a{color:inherit;text-decoration:none}.container{max-width:1100px;margin:0 auto;padding:0 24px}.nav{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06);padding:14px 0}.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.nav-brand{font-family:"Noto Serif TC",serif;font-weight:900;font-size:20px;color:#01696f}.nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.nav-links a{padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;color:#5a5547;transition:all .2s}.nav-links a:hover{background:rgba(1,105,111,.08);color:#01696f}.nav-cta{padding:9px 16px!important;background:#01696f;color:#fff!important;font-weight:600!important}.nav-cta:hover{background:#015a5f!important;color:#fff!important}.hero{max-width:900px;margin:0 auto;padding:80px 24px 40px;text-align:center}.hero-eyebrow{display:inline-block;padding:6px 14px;background:rgba(1,105,111,.1);color:#01696f;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:20px}.hero h1{font-family:"Noto Serif TC",serif;font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.2;color:#28251d;margin-bottom:16px}.hero p{font-size:17px;color:#5a5547;max-width:600px;margin:0 auto 8px}.hero-sub{font-size:18px;color:#01696f;font-weight:500}.hero-date{font-size:14px;color:#7a756a;font-variant-numeric:tabular-nums}.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}.btn-primary{padding:14px 28px;border-radius:999px;background:#01696f;color:#fff!important;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(1,105,111,.25);transition:transform .2s}.btn-primary:hover{transform:translateY(-2px)}.btn-outline{padding:14px 28px;border-radius:999px;border:2px solid #01696f;color:#01696f!important;font-weight:600;font-size:15px}.btn-outline:hover{background:rgba(1,105,111,.08)}.footer-cta{background:linear-gradient(135deg,#01696f 0%,#015a5f 100%);padding:80px 24px;text-align:center;color:#fff;margin-top:80px}.footer-cta h2{font-family:"Noto Serif TC",serif;font-size:clamp(28px,4vw,40px);font-weight:900;margin-bottom:16px}.footer-cta p{font-size:17px;opacity:.9;max-width:560px;margin:0 auto 32px}.footer-cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.footer-cta .btn-primary{background:#fff;color:#01696f!important;box-shadow:0 4px 14px rgba(0,0,0,.15)}.footer-cta .btn-outline{border-color:rgba(255,255,255,.4);color:#fff!important}.footer-cta .btn-outline:hover{background:rgba(255,255,255,.1)}footer{background:#28251d;color:#b8b2a1;padding:48px 24px 32px}.footer-inner{max-width:1100px;margin:0 auto}.footer-links{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08)}.footer-links a{font-size:14px;transition:color .2s}.footer-links a:hover{color:#fff}.footer-copy{text-align:center;font-size:13px;opacity:.6}.empty{text-align:center;padding:60px 24px;color:#8a8270;background:#fbfbf9;border:1px dashed #d6d1c9;border-radius:16px;max-width:760px;margin:40px auto}.section{padding:48px 0}.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;flex-wrap:wrap;gap:12px}.section-head h2{font-family:"Noto Serif TC",serif;font-size:28px;font-weight:700}.more{color:#01696f;font-weight:500;font-size:15px}.trip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}.trip-card{display:block;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 1px 3px rgba(0,0,0,.04)}.trip-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.1)}.trip-cover{aspect-ratio:16/10;background-size:cover;background-position:center;background-color:#e8e3d7}.trip-cover.placeholder{background:linear-gradient(135deg,#01696f 0%,#f0ede8 100%);display:flex;align-items:center;justify-content:center;font-size:64px}.trip-info{padding:18px 20px 22px}.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:10px}.badge-upcoming{background:#fff4d6;color:#8a6500}.badge-published{background:#e0f0ee;color:#01696f}.trip-info h3{font-family:"Noto Serif TC",serif;font-size:20px;font-weight:700;line-height:1.3;margin-bottom:6px}.trip-subtitle{color:#5a5547;font-size:14px;margin-bottom:8px}.trip-date{color:#7a756a;font-size:13px;font-variant-numeric:tabular-nums}.recent-list{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;overflow:hidden}.recent-item{display:flex;gap:16px;padding:18px 20px;border-bottom:1px solid rgba(0,0,0,.05);align-items:center;transition:background .15s}.recent-item:last-child{border-bottom:none}.recent-item:hover{background:#f7f6f2}.recent-thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0}.recent-thumb.placeholder{background:linear-gradient(135deg,rgba(1,105,111,.15),rgba(1,105,111,.05));display:flex;align-items:center;justify-content:center;font-size:28px}.recent-meta{color:#7a756a;font-size:13px;margin-bottom:4px}.recent-title{font-weight:500;font-size:15px}</style>
 </head>
 <body>
-
-    <header class="hero compact">
-      <div class="wrap">
-        <a class="back" href="/">← 回首頁</a>
-        <h1>所有旅行</h1>
-        <p class="lead">每趟旅行一個獨立頁,點進去看那趟的完整紀錄。</p>
-      </div>
-    </header>
-    <main class="wrap">
-      <div class="trip-grid"><a class="trip-card" href="/trips/kansai-2026/"><div class="cover"><img src="https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png" loading="lazy" alt=""></div><div class="info"><span class="badge upcoming">規劃中</span><h3>關西 2026 五天四夜</h3><p class="subtitle">京阪奈深度自由行</p><p class="date">2026-11-15 → 2026-11-19</p></div></a><a class="trip-card" href="/trips/kyoto-2026-06/"><div class="cover"><img src="https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png" loading="lazy" alt=""></div><div class="info"><span class="badge published">0 則紀錄</span><h3>京都 6 月</h3><p class="subtitle">嵐山與抹茶</p><p class="date">2026-06-19 → 2026-06-21</p></div></a><a class="trip-card" href="/trips/tokyo-2026-06/"><div class="cover"><img src="https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png" loading="lazy" alt=""></div><div class="info"><span class="badge published">0 則紀錄</span><h3>東京 6 月</h3><p class="subtitle">谷中與老街</p><p class="date">2026-06-14 → 2026-06-16</p></div></a><a class="trip-card" href="/trips/taichung-life/"><div class="cover"><img src="https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png" loading="lazy" alt=""></div><div class="info"><span class="badge published">0 則紀錄</span><h3>台中日常</h3><p class="subtitle">不算旅行的紀錄</p></div></a><a class="trip-card" href="/trips/slug/"><div class="cover"><img src="cover_image" loading="lazy" alt=""></div><div class="info"><span class="badge published">0 則紀錄</span><h3>title</h3><p class="subtitle">subtitle</p><p class="date">date_start → date_end</p></div></a></div>
-    </main>
-    <footer class="foot"><div class="wrap"><div class="links"><a href="/">首頁</a><a href="/diary/">日記流</a><a href="https://www.homoney.org/">回 Homoney</a></div></div></footer>
-  
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand">賓賓姊 · 旅行紀錄</a><div class="nav-links"><a href="/trips/">旅行</a><a href="/diary/">日記</a><a href="https://www.homoney.org/" class="nav-cta">回 Homoney 主站</a><a href="https://www.homoney.org/course-overview/" class="nav-cta">看課程總覽</a></div></div></nav><section class="hero"><span class="hero-eyebrow">✈️ TRIPS</span><h1>所有旅行</h1><p>每趟旅行一個獨立頁,點進去看完整紀錄。</p></section><main class="container"><div class="trip-grid"><a href="/trips/kansai-2026/" class="trip-card"><div class="trip-cover" style="background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png')"></div><div class="trip-info"><span class="badge badge-upcoming">規劃中</span><h3>關西 2026 五天四夜</h3><p class="trip-subtitle">京阪奈深度自由行</p><p class="trip-date">2026-11-15 → 2026-11-19</p></div></a><a href="/trips/kyoto-2026-06/" class="trip-card"><div class="trip-cover" style="background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png')"></div><div class="trip-info"><span class="badge badge-published">已完成</span><h3>京都 6 月</h3><p class="trip-subtitle">嵐山與抹茶</p><p class="trip-date">2026-06-19 → 2026-06-21</p></div></a><a href="/trips/tokyo-2026-06/" class="trip-card"><div class="trip-cover" style="background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png')"></div><div class="trip-info"><span class="badge badge-published">已完成</span><h3>東京 6 月</h3><p class="trip-subtitle">谷中與老街</p><p class="trip-date">2026-06-14 → 2026-06-16</p></div></a><a href="/trips/taichung-life/" class="trip-card"><div class="trip-cover" style="background-image:url('https://pub-1d31e41c03264354acede0255abba275.r2.dev/travel/test/20260627-125904-test.png')"></div><div class="trip-info"><span class="badge badge-published">已完成</span><h3>台中日常</h3><p class="trip-subtitle">不算旅行的紀錄</p></div></a><a href="/trips/slug/" class="trip-card"><div class="trip-cover" style="background-image:url('cover_image')"></div><div class="trip-info"><span class="badge badge-published">已完成</span><h3>title</h3><p class="trip-subtitle">subtitle</p><p class="trip-date">date_start → date_end</p></div></a></div></main><section class="footer-cta"><h2>看完旅行,認識更多賓賓姊</h2><p>不只是旅行紀錄,Homoney 還有完整的財富與生活系統課程。</p><div class="footer-cta-buttons"><a href="https://www.homoney.org/course-overview/" class="btn-primary">看課程總覽 →</a><a href="https://www.homoney.org/" class="btn-outline">回 Homoney 主站</a></div></section><footer><div class="footer-inner"><div class="footer-links"><a href="/">首頁</a><a href="/trips/">旅行列表</a><a href="/diary/">日記</a><a href="https://www.homoney.org/">Homoney 主站</a><a href="https://www.homoney.org/course-overview/">課程總覽</a></div><div class="footer-copy">© 賓賓姊 · 自架平台 · 內容版權所有</div></div></footer>
 </body>
 </html>
