@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="賓賓姊">
+<meta name="theme-color" content="#01696f">
+<title>寫日記 · 賓賓姊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { background:#f7f6f2; }
+  body {
+    font-family: Inter, "Noto Sans TC", sans-serif;
+    color:#28251d; line-height:1.6;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    min-height:100vh;
+  }
+  a { color:inherit; text-decoration:none; }
+
+  .top {
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,246,242,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .top h1 {
+    font-family:"Noto Serif TC",serif;
+    font-size:20px; font-weight:900; color:#01696f;
+  }
+  .top a.home { font-size:14px; color:#5a5547; }
+
+  .wrap { max-width:560px; margin:0 auto; padding:20px; }
+
+  .card {
+    background:#fff; border-radius:20px; padding:20px;
+    box-shadow:0 1px 3px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.04);
+    border:1px solid rgba(0,0,0,.04);
+    margin-bottom:16px;
+  }
+
+  label {
+    display:block; font-size:13px; font-weight:600;
+    color:#5a5547; margin-bottom:8px;
+  }
+  input, select, textarea {
+    width:100%; padding:13px 14px;
+    border:1px solid #e3ddd0; border-radius:12px;
+    font-size:16px; font-family:inherit; background:#fbfbf9;
+    color:#28251d;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline:none; border-color:#01696f; background:#fff;
+  }
+  textarea {
+    min-height:140px; resize:vertical; line-height:1.7;
+  }
+  .row { display:flex; gap:10px; }
+  .row > * { flex:1; min-width:0; }
+
+  .photo-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));
+    gap:8px; margin-top:12px;
+  }
+  .photo-thumb {
+    position:relative; aspect-ratio:1; border-radius:12px;
+    overflow:hidden; background:#e8e3d7;
+  }
+  .photo-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .photo-thumb .rm {
+    position:absolute; top:4px; right:4px;
+    width:24px; height:24px; border-radius:50%;
+    background:rgba(0,0,0,.6); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; cursor:pointer; border:none;
+  }
+  .add-photo {
+    aspect-ratio:1; border:2px dashed #c9c3b3; border-radius:12px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    cursor:pointer; color:#7a756a; background:#fbfbf9;
+    font-size:13px; transition:all .2s;
+  }
+  .add-photo:hover { border-color:#01696f; color:#01696f; }
+  .add-photo .icon { font-size:24px; margin-bottom:2px; }
+  #fileInput { display:none; }
+
+  .submit-bar {
+    position:sticky; bottom:0; z-index:50;
+    background:linear-gradient(180deg, rgba(247,246,242,0) 0%, #f7f6f2 30%);
+    padding:20px; padding-bottom:calc(20px + env(safe-area-inset-bottom));
+  }
+  .btn {
+    width:100%; padding:16px; border-radius:999px;
+    background:#01696f; color:#fff; font-weight:700; font-size:16px;
+    border:none; cursor:pointer;
+    box-shadow:0 6px 20px rgba(1,105,111,.25);
+    transition:all .2s; font-family:inherit;
+  }
+  .btn:active { transform:scale(.98); }
+  .btn:disabled { opacity:.6; cursor:wait; }
+
+  .toast {
+    position:fixed; bottom:80px; left:50%; transform:translateX(-50%);
+    background:#28251d; color:#fff; padding:14px 22px;
+    border-radius:999px; font-size:14px; font-weight:500;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    z-index:100; max-width:90%; text-align:center;
+    opacity:0; transition:opacity .3s;
+    pointer-events:none;
+  }
+  .toast.show { opacity:1; }
+  .toast.ok { background:#01696f; }
+  .toast.err { background:#a02622; }
+
+  .pw-wrap {
+    position:fixed; inset:0; background:#f7f6f2;
+    display:flex; align-items:center; justify-content:center;
+    z-index:200; padding:24px;
+  }
+  .pw-card {
+    background:#fff; border-radius:24px; padding:32px 28px;
+    width:100%; max-width:360px; text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,.08);
+  }
+  .pw-card h2 {
+    font-family:"Noto Serif TC",serif;
+    font-size:24px; color:#01696f; margin-bottom:8px;
+  }
+  .pw-card p { color:#7a756a; font-size:14px; margin-bottom:24px; }
+  .hint { font-size:12px; color:#9a907a; margin-top:6px; }
+</style>
+</head>
+<body>
+
+<div id="pwGate" class="pw-wrap">
+  <div class="pw-card">
+    <h2>賓賓姊發文</h2>
+    <p>第一次使用請輸入密碼,之後會自動記住</p>
+    <input id="pwInput" type="password" placeholder="密碼" autocomplete="current-password">
+    <button class="btn" style="margin-top:14px" onclick="checkPw()">進入</button>
+  </div>
+</div>
+
+<div class="top">
+  <h1>✍️ 寫一則日記</h1>
+  <a href="/" class="home">← 回站</a>
+</div>
+
+<div class="wrap">
+
+  <div class="card">
+    <div class="row">
+      <div>
+        <label>📅 日期</label>
+        <input type="date" id="date">
+      </div>
+      <div>
+        <label>✈️ 旅行</label>
+        <select id="trip">
+          <option value="taichung-life">台中日常</option>
+          <option value="kansai-2026">關西 2026 秋</option>
+          <option value="kyoto-2026-06">京都 2026/06</option>
+          <option value="tokyo-2026-06">東京 2026/06</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <label>📍 地點(選填)</label>
+    <input type="text" id="location" placeholder="台中 · 漢神百貨">
+
+    <label style="margin-top:16px">📝 標題</label>
+    <input type="text" id="title" placeholder="例:週末逛街筆記">
+
+    <label style="margin-top:16px">📖 今天發生了什麼</label>
+    <textarea id="body" placeholder="直接寫,Enter 換行..."></textarea>
+  </div>
+
+  <div class="card">
+    <label>📷 照片(可拍照或從相簿選,最多 6 張)</label>
+    <input type="file" id="fileInput" accept="image/*" multiple>
+    <div class="photo-grid" id="photoGrid">
+      <div class="add-photo" onclick="document.getElementById('fileInput').click()">
+        <div class="icon">+</div>
+        <div>新增照片</div>
+      </div>
+    </div>
+    <div class="hint" id="photoHint" style="display:none">壓縮中,請稍候...</div>
+  </div>
+
+</div>
+
+<div class="submit-bar">
+  <button class="btn" id="submitBtn" onclick="submit()">發布</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const API_URL = 'https://script.google.com/macros/s/AKfycbzgIKlMNwjRDrdNjFGtFT9fRvq1Fztb1gWvQDsMttaObzkl0mxcjcC0qgCVMIavf-3fAw/exec';
+  const MAX_PHOTOS = 6;
+  const MAX_DIMENSION = 1600;  // 長邊壓縮上限
+  const JPEG_QUALITY = 0.82;
+
+  let photos = [];  // { base64, mimeType, dataUrl }
+
+  // ---- 密碼門 ----
+  function checkPw() {
+    const v = document.getElementById('pwInput').value.trim();
+    if (!v) return;
+    localStorage.setItem('binbin_pw', v);
+    document.getElementById('pwGate').style.display = 'none';
+  }
+  if (localStorage.getItem('binbin_pw')) {
+    document.getElementById('pwGate').style.display = 'none';
+  }
+
+  // ---- 預設今天 ----
+  (function(){
+    const t = new Date();
+    const off = t.getTimezoneOffset() * 60000;
+    const local = new Date(t.getTime() - off);
+    document.getElementById('date').value = local.toISOString().substring(0,10);
+  })();
+
+  // ---- 照片處理:壓縮 + 轉 base64 ----
+  document.getElementById('fileInput').addEventListener('change', async function(e){
+    const files = Array.from(e.target.files);
+    if (!files.length) return;
+    const hint = document.getElementById('photoHint');
+    hint.style.display = 'block';
+    for (const f of files) {
+      if (photos.length >= MAX_PHOTOS) break;
+      try {
+        const result = await compressImage(f);
+        photos.push(result);
+        renderPhotos();
+      } catch (err) {
+        showToast('err', '圖片處理失敗:' + err.message);
+      }
+    }
+    hint.style.display = 'none';
+    e.target.value = '';
+  });
+
+  function compressImage(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          let { width, height } = img;
+          if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+            if (width > height) {
+              height = Math.round(height * MAX_DIMENSION / width);
+              width = MAX_DIMENSION;
+            } else {
+              width = Math.round(width * MAX_DIMENSION / height);
+              height = MAX_DIMENSION;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width; canvas.height = height;
+          canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
+          const base64 = dataUrl.split(',')[1];
+          resolve({ base64, mimeType: 'image/jpeg', dataUrl });
+        };
+        img.onerror = reject;
+        img.src = reader.result;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderPhotos() {
+    const grid = document.getElementById('photoGrid');
+    grid.innerHTML = '';
+    photos.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.className = 'photo-thumb';
+      div.innerHTML = '<img src="' + p.dataUrl + '"><button class="rm" onclick="removePhoto(' + i + ')">×</button>';
+      grid.appendChild(div);
+    });
+    if (photos.length < MAX_PHOTOS) {
+      const add = document.createElement('div');
+      add.className = 'add-photo';
+      add.onclick = () => document.getElementById('fileInput').click();
+      add.innerHTML = '<div class="icon">+</div><div>新增照片</div>';
+      grid.appendChild(add);
+    }
+  }
+
+  function removePhoto(i) {
+    photos.splice(i, 1);
+    renderPhotos();
+  }
+
+  // ---- Toast ----
+  function showToast(type, msg) {
+    const t = document.getElementById('toast');
+    t.className = 'toast ' + type + ' show';
+    t.textContent = msg;
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // ---- 提交 ----
+  async function submit() {
+    const password = localStorage.getItem('binbin_pw');
+    if (!password) { document.getElementById('pwGate').style.display = 'flex'; return; }
+
+    const data = {
+      password,
+      date: document.getElementById('date').value,
+      trip: document.getElementById('trip').value,
+      location: document.getElementById('location').value.trim(),
+      title: document.getElementById('title').value.trim(),
+      body: document.getElementById('body').value.trim(),
+      photos: photos.map(p => ({ base64: p.base64, mimeType: p.mimeType }))
+    };
+
+    if (!data.date || !data.body) {
+      showToast('err', '請至少填日期和內文');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '發布中... (' + photos.length + ' 張照片)';
+    showToast('ok', '上傳中,請稍等...');
+
+    try {
+      // 用 text/plain 避開 CORS preflight
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data),
+        redirect: 'follow'
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || '未知錯誤');
+
+      showToast('ok', '🎉 已發布!30 秒後上線');
+      // 清空欄位但保留密碼
+      document.getElementById('location').value = '';
+      document.getElementById('title').value = '';
+      document.getElementById('body').value = '';
+      photos = [];
+      renderPhotos();
+      btn.textContent = '✓ 已發布,再寫一則';
+      setTimeout(() => { btn.textContent = '發布'; btn.disabled = false; }, 3000);
+
+    } catch (err) {
+      showToast('err', '失敗:' + err.message);
+      btn.disabled = false;
+      btn.textContent = '再試一次';
+    }
+  }
+</script>
+</body>
+</html>
