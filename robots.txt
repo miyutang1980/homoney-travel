@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /diary-grid/
+Disallow: /diary-journal/
+Disallow: /diary-minimal/
+Disallow: /diary-picker/
+Disallow: /write/
+Disallow: /homoney-main-entry.html
+
+Sitemap: https://homoney-travel.pages.dev/sitemap.xml
